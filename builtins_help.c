@@ -13,6 +13,7 @@ void help_help(void);
 void help_all(void)
 {
 	char *msg = "Shellcom\nThese commands are defined internally.\n";
+
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "Type 'help' to see this list.\nType 'help name' to find ";
 	write(STDOUT_FILENO, msg, _strlen(msg));
@@ -35,9 +36,15 @@ void help_all(void)
 void help_alias(void)
 {
 	char *msg = "alias:alias [NAME[='VALUE']...]\nHandles aliases.\n\n";
+<<<<<<< HEAD
 	char *msg1 = "alias:alias [NAME[='VALUE']...]\n\tHandles aliases.\n";
 
 	write(STDOUT_FILENO, msg1, _strlen(msg));
+=======
+	char *msg = "alias:alias [NAME[='VALUE']...]\n\tHandles aliases.\n";
+
+	write(STDOUT_FILENO, msg, _strlen(msg));
+>>>>>>> 7ac3132a28534f470516cf580c5b704ce3715957
 	msg = "alias: Prints a list of all aliases, one per line, in ";
 	msg1 = "\n\talias: Prints a list of all aliases, one per line, in ";
 	write(STDOUT_FILENO, msg1, _strlen(msg));
@@ -62,6 +69,7 @@ void help_alias(void)
 void help_cd(void)
 {
 	char *msg = "cd:cd [DIRECTORY]\n\tChanges current directory of the";
+
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = " process to DIRECTORY.\n\n\tIf no argument is given, the ";
 	write(STDOUT_FILENO, msg, _strlen(msg));
@@ -82,6 +90,7 @@ void help_cd(void)
 void help_exit(void)
 {
 	char *msg = "exit: exit [STATUS]\n\tExits the shell.\n\n\tThe ";
+
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "STATUS argument is the integer used to exit the shell.";
 	write(STDOUT_FILENO, msg, _strlen(msg));
@@ -98,6 +107,7 @@ void help_exit(void)
 void help_help(void)
 {
 	char *msg = "help:help\n\tSee possible Shellcom builtin commands\n";
+
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "\n help [BUILTIN NAME]\n\tSee specific information on each ";
 	write(STDOUT_FILENO, msg, _strlen(msg));
