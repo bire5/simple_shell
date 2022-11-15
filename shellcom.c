@@ -49,7 +49,7 @@ int (*get_builtin(char *command))(char **args, char **front)
 
 int shellcom_exit(char **args, char **front)
 {
-	int i, len_of_int = 10;
+	int i, len = 10;
 	unsigned int num = 0, max = 1 << (sizeof(int) * 8 - 1);
 
 	if (args[0])
@@ -57,7 +57,7 @@ int shellcom_exit(char **args, char **front)
 		if (args[0][0] == '+')
 		{
 			i = 1;
-			len_of_int++;
+			len++;
 		}
 		for (; args[0][i]; i++)
 		{
@@ -148,7 +148,7 @@ int shellcom_cd(char **args, char __attribute__((__unused__)) **front)
 	dir_info[0] = "OLDPWD";
 	dir_info[1] = oldpwd;
 
-	if (shellby_setenv(dir_info, dir_info) == -1)
+	if (shellcom_setenv(dir_info, dir_info) == -1)
 		return (-1);
 
 	dir_info[0] = "PWD";
