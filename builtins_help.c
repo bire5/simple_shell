@@ -36,15 +36,9 @@ void help_all(void)
 void help_alias(void)
 {
 	char *msg = "alias:alias [NAME[='VALUE']...]\nHandles aliases.\n\n";
-<<<<<<< HEAD
 	char *msg1 = "alias:alias [NAME[='VALUE']...]\n\tHandles aliases.\n";
 
 	write(STDOUT_FILENO, msg1, _strlen(msg));
-=======
-	char *msg = "alias:alias [NAME[='VALUE']...]\n\tHandles aliases.\n";
-
-	write(STDOUT_FILENO, msg, _strlen(msg));
->>>>>>> 7ac3132a28534f470516cf580c5b704ce3715957
 	msg = "alias: Prints a list of all aliases, one per line, in ";
 	msg1 = "\n\talias: Prints a list of all aliases, one per line, in ";
 	write(STDOUT_FILENO, msg1, _strlen(msg));
