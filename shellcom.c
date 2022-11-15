@@ -1,9 +1,9 @@
 #include "header.h"
 
 int (*get_builtin(char *command))(char **args, char **front);
-int shellby_exit(char **args, char **front);
-int shellby_cd(char **args, char __attribute__((__unused__)) **front);
-int shellby_help(char **args, char __attribute__((__unused__)) **front);
+int shellcom_exit(char **args, char **front);
+int shellcom_cd(char **args, char __attribute__((__unused__)) **front);
+int shellcom_help(char **args, char __attribute__((__unused__)) **front);
 
 /**
  * get_builtin - Matches a command with a corresponding
@@ -15,13 +15,13 @@ int shellby_help(char **args, char __attribute__((__unused__)) **front);
 int (*get_builtin(char *command))(char **args, char **front)
 {
 	builtin_t funcs[] = {
-		{ "exit", shellby_exit },
-		{ "env", shellby_env },
-		{ "setenv", shellby_setenv },
-		{ "unsetenv", shellby_unsetenv },
-		{ "cd", shellby_cd },
-		{ "alias", shellby_alias },
-		{ "help", shellby_help },
+		{ "exit", shellcom_exit },
+		{ "env", shellcom_env },
+		{ "setenv", shellcom_setenv },
+		{ "unsetenv", shellcom_unsetenv },
+		{ "cd", shellcom_cd },
+		{ "alias", shellcom_alias },
+		{ "help", shellcom_help },
 		{ NULL, NULL }
 	};
 
@@ -47,9 +47,9 @@ int (*get_builtin(char *command))(char **args, char **front)
  * Description: Upon returning -3, the program exits back in the main function.
  */
 
-int shellby_exit(char **args, char **front)
+int shellcom_exit(char **args, char **front)
 {
-	int i, len_of_int = 10;
+	int i, len = 10;
 	unsigned int num = 0, max = 1 << (sizeof(int) * 8 - 1);
 
 	if (args[0])
@@ -57,11 +57,11 @@ int shellby_exit(char **args, char **front)
 		if (args[0][0] == '+')
 		{
 			i = 1;
-			len_of_int++;
+			len++;
 		}
 		for (; args[0][i]; i++)
 		{
-			if(i<=len && args[0][i] >= '0' && args[0][i] <= '9')
+			if (i <= len && args[0][i] >= '0' && args[0][i] <= '9')
 				num = (num * 10) + (args[0][i] - '0');
 			else
 				return (create_error(--args, 2));
@@ -148,7 +148,7 @@ int shellcom_cd(char **args, char __attribute__((__unused__)) **front)
 	dir_info[0] = "OLDPWD";
 	dir_info[1] = oldpwd;
 
-	if (shellby_setenv(dir_info, dir_info) == -1)
+	if (shellcom_setenv(dir_info, dir_info) == -1)
 		return (-1);
 
 	dir_info[0] = "PWD";
