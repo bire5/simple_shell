@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
 		exit(-100);
 	if (argc != 1)
 	{
-		ret = proc_file_commands(argv[1], exe_ret);
+		ret = permission(argv[1], exe_ret);
 		free_env();
 		free_alias_list(aliases);
 		return (*exe_ret);

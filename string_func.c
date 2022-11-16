@@ -13,11 +13,12 @@ char *_strncat(char *dest, const char *src, size_t n);
 
 int _strlen(const char *s)
 {
-	int length = 0;
+	int length = 0, len;
 
 	if (!s)
 		return (length);
-	for (length = 0; s[length]; length++);
+	for (len = 0; s[len]; len++)
+		length++;
 	return (length);
 }
 

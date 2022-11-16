@@ -16,9 +16,8 @@ char **_copyenv(void)
 	size_t size;
 	int index;
 
-	for (size = 0; environ[size]; size++);
-
-	new_environ = malloc(sizeof(char *) * (size + 1));
+	for (size = 0; environ[size]; size++)
+		new_environ = malloc(sizeof(char *) * (size + 1));
 	if (!new_environ)
 		return (NULL);
 	for (index = 0; environ[index]; index++)
@@ -60,8 +59,8 @@ void free_env(void)
 char **_getenv(const char *var)
 {
 	int index, len;
-	len = _strlen(var);
 
+	len = _strlen(var);
 	for (index = 0; environ[index]; index++)
 	{
 		if (_strncmp(var, environ[index], len) == 0)
