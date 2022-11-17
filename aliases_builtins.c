@@ -5,7 +5,7 @@ void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
 
 /**
- * shellcom_alias - Builtin command that either prints all aliases, specific
+ * shellby_alias - Builtin command that either prints all aliases, specific
  * aliases, or sets an alias.
  * @args: An array of arguments.
  * @front: A double pointer to the beginning of args.
@@ -129,7 +129,7 @@ char **replace_aliases(char **args)
 
 	alias_t *temp;
 	int i;
-	char *new_value;
+	char *new;
 
 	if (_strcmp(args[0], "alias") == 0)
 		return (args);

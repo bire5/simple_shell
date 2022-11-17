@@ -13,7 +13,7 @@ char *_strncat(char *dest, const char *src, size_t n);
 
 int _strlen(const char *s)
 {
-	int length = 0;
+	int length = 0, len;
 
 	if (!s)
 		return (length);
