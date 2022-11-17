@@ -62,7 +62,8 @@ int shellcom_setenv(char **args, char __attribute__((__unused__)) **front)
 		*env_var = new_value;
 		return (0);
 	}
-	for (size = 0; environ[size]; size++);
+	for (size = 0; environ[size]; size++)
+		;
 	new_environ = malloc(sizeof(char *) * (size + 2));
 	if (!new_environ)
 	{
@@ -99,7 +100,8 @@ int shellcom_unsetenv(char **args, char __attribute__((__unused__)) **front)
 	env_var = _getenv(args[0]);
 	if (!env_var)
 		return (0);
-	for (size = 0; environ[size]; size++);
+	for (size = 0; environ[size]; size++)
+		;
 	new_environ = malloc(sizeof(char *) * size);
 	if (!new_environ)
 		return (create_error(args, -1));
