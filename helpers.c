@@ -122,12 +122,13 @@ void variable_replacement(char **line, int *exe_ret)
 			else if (old_line[j + 1])
 			{
 				/* extract variable name to search for */
-				for (k = j + 1; old_line[k] &&
-						old_line[k] != '$' &&
-						old_line[k] != ' '; 
-						k++);
-				len = k - (j + 1);
-				rep = get_env_value(&old_line[j + 1], len);
+				k = j + 1;
+				while (old_line[k] && old_line[k] != '$' && old_line[k] != ' ')
+				{
+					len = k - (j + 1);
+					rep = get_env_value(&old_line[j + 1], len);
+					k++;
+				}
 			}
 			new_line = malloc(j + _strlen(rep)
 					  + _strlen(&old_line[k]) + 1);

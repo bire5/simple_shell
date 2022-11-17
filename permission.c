@@ -1,7 +1,7 @@
 #include "header.h"
 
 int cant_open(char *file_path);
-int proc_file_commands(char *file_path, int *exe_ret);
+int permission(char *file_path, int *exe_ret);
 
 /**
  * cant_open - If the file doesn't exist or lacks proper permissions, print
@@ -41,7 +41,7 @@ int cant_open(char *file_path)
 }
 
 /**
- * permissions - Takes a file and attempts to run the commands stored in it
+ * permission - Takes a file and attempts to run the commands stored in it
  * @file_path: Path to the file.
  * @exe_ret: Return value of the last executed command.
  * Return: If file couldn't be opened - 127.
@@ -49,7 +49,7 @@ int cant_open(char *file_path)
  *	   Else the return value of the last command ran.
  */
 
-int permissions(char *file_path, int *exe_ret)
+int permission(char *file_path, int *exe_ret)
 {
 	ssize_t file, b_read, i;
 	unsigned int line_size = 0;
